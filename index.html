@@ -4,10 +4,10 @@
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="img/favicon.png">
 <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
-<meta name="theme-color" content="#b71c1c">
+<meta name="theme-color" content="#b71c1c"><meta name="color-scheme" content="light only">
 <meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Gudep Umar"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<style>html{background:#800020}
+<style>@media print{html,body{background:#fff!important}header,nav,#nv,.noprint{display:none!important}#mn>*:not(.lapcetak){display:none!important}#mn>.lapcetak{display:block!important;border:0!important;box-shadow:none!important;padding:0!important;margin:0!important}}html{background:#800020}
 :root{--r:#b71c1c;--rd:#7f1212;--bg:#fbf4f2;--ink:#2a1a18;--mu:#7a6460;--ok:#2e7d32;--wa:#e0a800;--ln:#ead6d2}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}html,body{margin:0;height:100%}
 body{font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--ink);padding-top:env(safe-area-inset-top)}
@@ -37,7 +37,7 @@ main{max-width:560px;margin:0 auto;padding:10px 14px 96px}
 .card{background:#fff;border:1px solid var(--ln);border-radius:14px;padding:14px;margin:10px 0}
 h2{margin:0 0 6px;font-size:18px}.mu{color:var(--mu);font-size:14px}
 label{display:block;margin:10px 0 3px;font-weight:600;font-size:14px}
-input,select,textarea{width:100%;padding:11px;border:1px solid #cdb8b3;border-radius:10px;font:inherit;background:#fff}
+input,select,textarea{width:100%;padding:13px 12px;border:2px solid #8a6f69;border-radius:10px;font:inherit;font-size:17px;font-weight:500;background:#fff!important;color:#1d0f0d!important;-webkit-text-fill-color:#1d0f0d;caret-color:#b71c1c;color-scheme:light}input::placeholder,textarea::placeholder{color:#7a6560!important;-webkit-text-fill-color:#7a6560;opacity:1}input:focus,select:focus,textarea:focus{outline:3px solid #f5b400;border-color:#b71c1c}input:-webkit-autofill{-webkit-text-fill-color:#1d0f0d;-webkit-box-shadow:0 0 0 40px #fff inset}input[type=checkbox]{width:22px;height:22px;accent-color:#b71c1c}
 button.b{font:inherit;border:0;border-radius:10px;padding:11px 16px;background:var(--r);color:#fff;font-weight:700;margin-top:12px}
 button.g{font:inherit;background:#fff;color:var(--r);border:1px solid var(--r);border-radius:10px;padding:8px 14px;font-weight:700;margin-top:8px}
 .tabs{display:flex;gap:6px;margin:10px 0}.tabs button{flex:1;margin:0;padding:9px;background:#fff;color:var(--r);border:1px solid var(--r);border-radius:10px;font:inherit;font-weight:700}.tabs button.on{background:var(--r);color:#fff}
@@ -54,7 +54,7 @@ details{border-top:1px solid var(--ln);padding:6px 0}summary{cursor:pointer;font
 .pg{border:2px solid #c9a227;border-radius:12px;padding:12px;margin:10px 0;background:linear-gradient(135deg,#fffdf5,#fff3d1);text-align:center}
 .pg b{color:var(--rd);font-size:16px}.pg div{font-size:13px;color:#6b5a2a}
 .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}.grid img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:8px;background:#eee}
-#lb{position:fixed;inset:0;background:#000e;z-index:30;display:none;align-items:center;justify-content:center;flex-direction:column;color:#fff;padding:14px}#lb.on{display:flex}#lb img{max-width:100%;max-height:78vh;border-radius:8px}
+#eb{position:fixed;inset:0;z-index:40;background:#111;display:none;flex-direction:column}#eb.on{display:flex}#eb .ebh{display:flex;align-items:center;gap:8px;padding:8px 12px;background:#b71c1c;color:#fff}#eb .ebh b{flex:1}#eb .ebh button{background:#fff;color:#b71c1c;border:0;border-radius:9px;padding:8px 14px;font:inherit;font-weight:700}#eb iframe{flex:1;border:0;background:#fff;width:100%}#lb{position:fixed;inset:0;background:#000e;z-index:30;display:none;align-items:center;justify-content:center;flex-direction:column;color:#fff;padding:14px}#lb.on{display:flex}#lb img{max-width:100%;max-height:78vh;border-radius:8px}
 .hide{display:none}canvas#kc{width:100%;border-radius:14px;box-shadow:0 4px 16px #0003}
 </style></head><body>
 <div id="cover">
@@ -65,7 +65,7 @@ details{border-top:1px solid var(--ln);padding:6px 0}summary{cursor:pointer;font
 </div>
 <div id="spl"><div class="h hl"><i></i></div><div class="h hr"><i></i></div><div id="fl"><div class="sw"><div class="fp"><img src="img/umar-bulat.png" alt=""><img src="img/ummu-bulat.png" alt=""></div></div></div></div>
 <div id="app" class="hide">
- <header><img src="img/umar.jpg" alt=""><b>Portal Siswa<small>Gudep 06.297 · 06.298</small></b><button onclick="muat()">⟳</button><button onclick="keluar()">Keluar</button></header>
+ <header><img src="img/umar.jpg" alt=""><b>Portal Peserta Didik<small>Gudep 06.297 · 06.298</small></b><button onclick="ebBuka()" id="hb_eb" title="E-book">📘</button><button onclick="muat()">⟳</button><button onclick="keluar()">Keluar</button></header>
  <main id="mn"></main><nav id="nv"></nav>
 </div>
 <div id="lb" onclick="if(event.target==this)lbTutup()"></div>
@@ -95,7 +95,7 @@ setTimeout(function(){$('fl').className='flip';setTimeout(function(){$('fl').sty
 if('serviceWorker' in navigator)window.addEventListener('load',function(){navigator.serviceWorker.register('sw.js').catch(function(){})});
 /* ---- alur ---- */
 function masukApp(){$('cover').style.display='none';$('app').className='';if(ls('gd_ptok')){PB.id=ls('gd_pid');PB.tok=ls('gd_ptok');PB.nama=ls('gd_pnama')||PB.id;PB.peran=ls('gd_pperan')||'Pelihat';pbMuat();return}var n=ls('gd_n'),p=ls('gd_p');if(n&&p){U.nisn=n;U.pin=p;muat(true)}else R()}
-function muat(auto){U.err='';U.msg='';U.off=false;api('masuk',U.nisn,U.pin).then(function(r){
+function muat(auto){if(PB.tok&&U.mode!='x'&&!U.me){pbMuat();return}U.err='';U.msg='';U.off=false;api('masuk',U.nisn,U.pin).then(function(r){
   if(r.error){if(auto){ls('gd_p',null);U.err=PESAN[r.error]||'Gagal.'}else U.err=PESAN[r.error]||'Gagal.';if(!U.me)U.me=null;return R()}
   U.me=r.ok;ls('gd_cache',JSON.stringify(r.ok));if(auto||!U.me)U.tab=(r.ok.status=='Belum diisi'||r.ok.status=='Perlu diperbaiki')?'home':U.tab;R()
  }).catch(function(){var c=ls('gd_cache');if(c&&!U.me){try{U.me=JSON.parse(c);U.off=true;R();return}catch(e){}}U.err='Tidak dapat menghubungi server. Periksa internet.';R()})}
@@ -122,10 +122,33 @@ function daftar(){var n=$('f_n').value.replace(/\D/g,''),p=$('f_p').value,p2=$('
  api('daftar',n,p).then(function(r){if(r.error){U.err=PESAN[r.error]||'Gagal.';return R()}U.mode='masuk';U.msg='Akun dibuat. Silakan masuk.';R()}).catch(function(){U.err='Tidak dapat menghubungi server.';R()})}
 function masuk(){var n=$('f_n').value.replace(/\D/g,''),p=$('f_p').value,ing=$('f_i')&&$('f_i').checked;U.nisn=n;U.pin=p;U.err='';U.msg='';
  api('masuk',n,p).then(function(r){if(r.error){U.err=PESAN[r.error]||'Gagal.';return R()}U.me=r.ok;ls('gd_cache',JSON.stringify(r.ok));if(ing){ls('gd_n',n);ls('gd_p',p)}U.tab=(r.ok.status=='Belum diisi'||r.ok.status=='Perlu diperbaiki')?'home':'home';R()}).catch(function(){U.err='Tidak dapat menghubungi server.';R()})}
+
+/* ---- Beranda belajar: misi & lencana ---- */
+function berandaBelajar(){var m=U.me,l=lvlNow(),B=m.butir||[],S=(m.progres&&m.progres.s)||{},tot=0,lul=0,areaA={},lv={};
+ LV.forEach(function(L){var Bl=B.filter(function(b){return b[1]==L}),str=S[L]||'',n=0;Bl.forEach(function(b,i){var st=+str.charAt(i)||0;tot++;n+=st==3?1:0;if(st==3)lul++;var k=L+'|'+b[2];areaA[k]=areaA[k]||[0,0];areaA[k][0]++;if(st==3)areaA[k][1]++});lv[L]=[Bl.length,n]});
+ var Bl=B.filter(function(b){return b[1]==l}),str=S[l]||'',mis=null,mst=0;
+ for(var i=0;i<Bl.length;i++){var st=+str.charAt(i)||0;if(st<3){mis=Bl[i];mst=st;break}}
+ var bd=[];[[1,'Langkah pertama','1 butir lulus'],[5,'Lima Butir','5 butir lulus'],[10,'Sepuluh Butir','10 butir lulus'],[25,'Pendekar Kecil','25 butir lulus']].forEach(function(x){bd.push([x[1],x[2],lul>=x[0]])});
+ LV.forEach(function(L){if(lv[L][0]&&lv[L][1]==lv[L][0])bd.push(['Tuntas '+L,'Semua butir '+L+' lulus',true]);else bd.push(['Tuntas '+L,'Selesaikan semua butir '+L,false])});
+ Object.keys(areaA).forEach(function(k){var a=areaA[k];if(a[0]&&a[0]==a[1])bd.push(['Ahli '+k.split('|')[1],'Bagian '+k.split('|')[1]+' tuntas ('+k.split('|')[0]+')',true])});
+ var p=tot?Math.round(100*lul/tot):0,got=bd.filter(function(x){return x[2]}).length;
+ var misi=mis?'<div style="margin-top:10px;padding:10px;border-radius:12px;background:#fff3f0"><div class="mu">🎯 Misi untukmu ('+h(l)+')</div><b>'+h(mis[0])+'</b> '+h(mis[3])+' <span class="chip s'+mst+'">'+ST[mst]+'</span>'+(mis[4]?'<div class="mu" style="margin-top:4px"><b>Cara uji:</b> '+h(mis[4])+'</div>':'')+'<div style="display:flex;gap:8px;flex-wrap:wrap"><button class="b" onclick="ebBuka()">📘 Pelajari di e-book</button><button class="g" style="margin-top:12px" onclick="U.lvl=\''+l+'\';U.aj=\''+h(mis[0])+'\';go(\'cap\')">Ajukan uji</button></div></div>'
+  :(Bl.length?'<div style="margin-top:10px;padding:10px;border-radius:12px;background:#e8f5e9"><b>🎉 Semua butir '+h(l)+' sudah lulus!</b><div class="mu">Tanyakan pembina soal tingkat berikutnya.</div></div>':'<div class="mu" style="margin-top:10px">Daftar butir belum dikirim pembina.</div>');
+ return '<div class="card" style="border:2px solid #b71c1c"><h2>Halo, Adik '+h((m.profil.nama||'').split(' ')[0])+'! 👋</h2><div class="mu">'+lul+' dari '+tot+' butir SKU lulus ('+p+'%) · '+got+' lencana</div><div class="bar"><i style="width:'+p+'%"></i></div>'+misi
+ +'<div style="margin-top:12px"><b>Lencanamu</b></div><div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:6px">'+bd.map(function(x){return '<span title="'+h(x[1])+'" style="padding:6px 10px;border-radius:999px;font-size:13px;border:1px solid '+(x[2]?'#b71c1c':'#ccc')+';background:'+(x[2]?'#ffe9e6':'#f5f5f5')+';color:'+(x[2]?'#7f0000':'#999')+'">'+(x[2]?'🏅 ':'🔒 ')+h(x[0])+'</span>'}).join('')+'</div></div>'}
+
+function bt(n){return '<span title="'+n+' bintang" style="white-space:nowrap">⭐ × '+n+'</span>'}
+function kartuPeringkat(){var r=U.me.peringkat;if(!r)return '';
+ var md=r.rank==1?'🥇':r.rank==2?'🥈':r.rank==3?'🥉':'🏅';
+ return '<div class="card" style="border:2px solid #e0a800"><h2>🏆 Peringkat prestasi SKU</h2><div class="mu">Dibandingkan dengan sesama yang sedang menuju <b>'+h(r.tingkat)+'</b> ('+r.jumlah+' orang).</div>'
+ +'<div style="margin-top:10px;padding:12px;border-radius:12px;background:#fff8e1"><div style="font-size:30px;font-weight:800">'+md+' Peringkat '+r.rank+' <span style="font-size:16px;font-weight:600">dari '+r.jumlah+'</span></div>'
+ +'<div style="font-size:24px;font-weight:800;color:#b26a00;margin-top:4px">⭐ '+r.bintang+' bintang</div><div class="mu">Nilai '+r.nilai+' · '+r.lulus+' dari '+r.butir+' butir sudah lulus</div></div>'
+ +'<div style="margin-top:10px"><b>Tiga teratas</b></div>'+r.teratas.map(function(x){return '<div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #eee'+(x.saya?';font-weight:700;color:#b71c1c':'')+'"><span style="flex:1">'+x.rank+'. '+(x.saya?'Kamu ('+h(x.nama)+')':h(x.nama))+'</span><span style="min-width:72px;text-align:center">'+bt(x.bintang)+'</span><span style="min-width:40px;text-align:right">'+x.nilai+'</span></div>'}).join('')
+ +'<details style="margin-top:8px"><summary class="mu">Cara penilaian</summary><div class="mu">Setiap butir SKU yang kamu selesaikan dan dinyatakan lulus oleh pembina = 1 bintang ⭐ = nilai 100. Bintang bertambah otomatis. Peringkat diurutkan dari bintang terbanyak, dibandingkan dengan sesama yang menuju tingkat yang sama.</div></details></div>'}
 /* ---- Profil ---- */
 function vHome(){var m=U.me,p=m.profil,d=m.data||{},kunci=m.status=='Disetujui';
  var wajib=terkunci()?'<div class="card" style="background:#fff3cd;border-color:#e0a800"><b>Lengkapi biodatamu dulu</b><div class="mu">Menu Capaian, Kartu, Materi, Piagam, dan Album terbuka setelah biodata dan fotomu terkirim ke pembina.</div></div>':'';
- var top=wajib+'<div class="card"><div style="display:flex;gap:12px">'+(m.foto?'<img class="ft" src="'+m.foto+'" alt="foto">':'')+'<div style="flex:1"><h2>'+h(p.nama)+'</h2><div class="mu">Kelas '+h(p.kelas||'-')+' · '+h(p.satuan||'')+'<br>NTA '+h(p.nta||'-')+'<br>Tingkat: <b>'+h(p.tingkat||'Belum ada')+'</b> · Target: <b>'+h(p.target||'-')+'</b></div></div></div>'
+ var top=wajib+(terkunci()?'':berandaBelajar()+kartuPeringkat())+'<div class="card"><div style="display:flex;gap:12px">'+(m.foto?'<img class="ft" src="'+m.foto+'" alt="foto">':'')+'<div style="flex:1"><h2>'+h(p.nama)+'</h2><div class="mu">Kelas '+h(p.kelas||'-')+' · '+h(p.satuan||'')+'<br>NTA '+h(p.nta||'-')+'<br>Tingkat: <b>'+h(p.tingkat||'Belum ada')+'</b> · Target: <b>'+h(p.target||'-')+'</b></div></div></div>'
  +'<div style="margin-top:8px">Data diri: <span class="chip '+(m.status=='Disetujui'?'s3':m.status=='Menunggu'?'s2':m.status=='Perlu diperbaiki'?'s1':'s0')+'">'+h(m.status)+'</span></div>'+(m.catatan?'<div class="err">Catatan pembina: '+h(m.catatan)+'</div>':'')+'</div>';
  return top+'<div class="card"><h2>Data diri</h2><div class="mu">'+(kunci?'Datamu sudah disetujui dan terkunci. Hubungi pembina bila ada yang perlu diubah.':'Isi dengan benar. Setelah dikirim, pembina akan memeriksanya.')+'</div>'
  +KSF.map(function(f){var v=d[f[0]]||'';return '<label>'+f[1]+'</label>'+(f[2]=='sel'?'<select id="d_'+f[0]+'"'+(kunci?' disabled':'')+'>'+f[3].map(function(o){return '<option'+(o==v?' selected':'')+'>'+h(o)+'</option>'}).join('')+'</select>':'<input id="d_'+f[0]+'" type="'+f[2]+'" value="'+h(v)+'"'+(kunci?' disabled':'')+'>')}).join('')
@@ -151,19 +174,21 @@ function formAjukan(id){return '<div class="card" style="margin:6px 0;background
  +'<label>Foto bukti (opsional)</label><input id="a_f" type="file" accept="image/*" onchange="pilihFotoB(this)">'+(U.fotoB?'<img class="ft" src="'+U.fotoB+'" alt="">':'')
  +'<div style="display:flex;gap:8px"><button class="b" onclick="ajukan(\''+h(id)+'\')">Kirim ke pembina</button><button class="g" style="margin-top:12px" onclick="U.aj=\'\';U.fotoB=\'\';U.err=\'\';R()">Batal</button></div>'+(U.err?'<div class="err">'+h(U.err)+'</div>':'')+'</div>'}
 function lvlNow(){return U.lvl||U.me.profil.target||'Ramu'}
-function lvlTabs(){var l=lvlNow();return '<div class="tabs">'+LV.map(function(x){return '<button class="'+(l==x?'on':'')+'" onclick="U.lvl=\''+x+'\';U.aj=\'\';R()">'+x+'</button>'}).join('')+'</div>'}
+function lvlTabs(){var l=lvlNow();return ebCard()+'<div class="tabs">'+LV.map(function(x){return '<button class="'+(l==x?'on':'')+'" onclick="U.lvl=\''+x+'\';U.aj=\'\';R()">'+x+'</button>'}).join('')+'</div>'}
 function butirList(me,lv){var str=(me.progres&&me.progres.s&&me.progres.s[lv])||'',B=(me.butir||[]).filter(function(b){return b[1]==lv});if(!B.length)return '<div class="mu">Daftar butir belum dikirim pembina.</div>';
  return B.map(function(b,i){var st=+str.charAt(i)||0,u=ujiOf(me,b[0]),x='';
   if(st==3){x=u&&u.status=='Lulus'?'<div class="mu">✔ Diverifikasi '+h(u.penguji)+' · '+h(u.diputus)+'</div>':''}
   else if(u&&u.status=='Direkomendasikan'){x='<div class="mu">✔ Sudah dicek pembina '+h(u.penguji||'')+'. Menunggu keputusan akhir.</div>'}
   else if(u&&u.status=='Diajukan'){x='<div class="mu">⏳ Diajukan '+h(u.diajukan)+'. Menunggu pembina.</div>'}
+  else if(st==2&&!(u&&u.status=='Perlu perbaikan')){x='<div class="mu">⏳ Siap diuji. Menunggu pembina menguji.</div>'}
   else{if(u&&u.status=='Perlu perbaikan')x='<div class="err" style="font-size:14px">Perlu perbaikan: '+h(u.balas||'-')+'</div>';x+=(U.aj==b[0]?formAjukan(b[0]):'<button class="g" style="margin-top:6px;padding:6px 12px" onclick="U.aj=\''+h(b[0])+'\';U.fotoB=\'\';U.err=\'\';R()">Ajukan uji</button>')}
   return '<div class="row"><b>'+h(b[0])+'</b><span>'+h(b[3])+'</span><span class="chip s'+st+'" style="flex:none">'+ST[st]+'</span><div style="flex-basis:100%">'+x+'</div></div>'}).join('')}
 function vCap(){var m=U.me,l=lvlNow();return '<div class="card"><h2>Capaian SKU</h2><div class="mu">Dipantau pembina. Terakhir diperbarui: '+h(m.diperbarui||'-')+'</div>'+tingkatBar(m)+'</div>'+lvlTabs()+'<div class="card"><h2>Butir tingkat '+h(l)+'</h2>'+butirList(m,l)+(U.msg?'<div class="okm">'+h(U.msg)+'</div>':'')+'</div>'}
 function pilihFotoB(inp){var f=inp.files[0];if(!f)return;var t=$('a_t').value,c=$('a_c').value;kecil(f,480,0,44000,function(d){U.fotoB=d;R();$('a_t').value=t;$('a_c').value=c},false)}
-function ajukan(id){var t=($('a_t').value||'').trim(),c=($('a_c').value||'').trim();U.err='';
- api('ajukan',U.nisn,U.pin,id,c,t,U.fotoB).then(function(r){if(r.error){U.err=PESAN[r.error]||'Gagal.';return R()}
-  U.me.uji=U.me.uji||[];U.me.uji.unshift({id:r.id,butir:id,status:'Diajukan',catatan:c,balas:'',penguji:'',diajukan:'baru saja',diputus:''});U.aj='';U.fotoB='';U.msg='Terkirim ke pembina.';R()}).catch(function(){U.err='Gagal mengirim. Coba lagi.';R()})}
+var kirimAj=false;
+function ajukan(id){if(kirimAj)return;kirimAj=true;var t=($('a_t').value||'').trim(),c=($('a_c').value||'').trim();U.err='';
+ api('ajukan',U.nisn,U.pin,id,c,t,U.fotoB).then(function(r){kirimAj=false;if(r.error){U.err=PESAN[r.error]||'Gagal.';return R()}
+  U.me.uji=U.me.uji||[];U.me.uji.unshift({id:r.id,butir:id,status:'Diajukan',catatan:c,balas:'',penguji:'',diajukan:'baru saja',diputus:''});U.aj='';U.fotoB='';U.msg='Terkirim ke pembina.';R()}).catch(function(){kirimAj=false;U.err='Gagal mengirim. Coba lagi.';R()})}
 /* ---- Materi SKU ---- */
 function vMateri(){var m=U.me,l=lvlNow(),B=(m.butir||[]).filter(function(b){return b[1]==l});
  if(!B.length)return lvlTabs()+'<div class="card mu">Materi belum dikirim pembina.</div>';
@@ -204,51 +229,78 @@ function kartuGambar(){var c=$('kc');if(!c)return;var m=U.me,p=m.profil,d=m.data
 function kartuSimpan(){var c=$('kc');if(!c)return;var a=document.createElement('a');a.download='kartu-'+U.nisn+'.png';a.href=c.toDataURL('image/png');document.body.appendChild(a);a.click();a.remove()}
 
 /* ---- Pembina ---- */
-var PB={id:'',tok:'',nama:'',peran:'Pelihat',tab:'uji',L:null,D:null,B:null,G:null,A:null,K:null,lv:'Ramu',sub:'materi',cs:'',q:'',err:'',msg:'',pil:'',sib:false,foto:'',fotoK:''};
+var PB={id:'',tok:'',nama:'',peran:'Pelihat',tab:'uji',L:null,D:null,B:null,G:null,A:null,K:null,KP:null,kk:'',kq:'',lv:'Ramu',sub:'materi',cs:'',q:'',err:'',msg:'',pil:'',sib:false,foto:'',fotoK:''};
 function dev(){var d=ls('gd_dev');if(!d){d='hp-'+Math.random().toString(36).slice(2)+Date.now().toString(36);ls('gd_dev',d)}return d}
 function apiP(action,x){var o=Object.assign({action:action,id:PB.id,token:PB.tok,device:dev()},x||{});return fetch(API,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(o),redirect:'follow'}).then(function(r){return r.json()}).then(function(j){if(j&&j.error=='keluar'){pbLepas('Sesi pembina berakhir (akun dipakai di perangkat lain atau dinonaktifkan). Masuk lagi.');throw 'keluar'}return j})}
-function pbLepas(msg){PB={id:'',tok:'',nama:'',peran:'Pelihat',tab:'uji',L:null,D:null,B:null,G:null,A:null,K:null,lv:'Ramu',sub:'materi',cs:'',q:'',err:'',msg:'',pil:'',sib:false,foto:'',fotoK:''};ls('gd_ptok',null);U.me=null;U.mode='pembina';U.err=msg||'';R()}
+function pbLepas(msg){PB={id:'',tok:'',nama:'',peran:'Pelihat',tab:'uji',L:null,D:null,B:null,G:null,A:null,K:null,KP:null,kk:'',kq:'',lv:'Ramu',sub:'materi',cs:'',q:'',err:'',msg:'',pil:'',sib:false,foto:'',fotoK:''};ls('gd_ptok',null);try{var kd0=ls('gd_pkode');if(kd0){var c0=JSON.parse(localStorage.getItem('lvl_codes')||'[]');localStorage.setItem('lvl_codes',JSON.stringify(c0.filter(function(x){return x!=kd0})))}}catch(e){}ls('gd_pkode',null);U.me=null;U.mode='pembina';U.err=msg||'';R()}
 function pbMasuk(){var id=($('p_i').value||'').trim().toLowerCase(),pin=$('p_p').value||'';U.err='';U.pidv=id;if(!id||!pin){U.err='Isi ID dan PIN.';return R()}
  fetch(API,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({action:'login',id:id,pin:pin,device:dev(),nama:'Aplikasi HP'}),redirect:'follow'}).then(function(r){return r.json()}).then(function(j){
   if(j.error){U.err=j.error=='terkunci'?'Terlalu banyak percobaan. Coba lagi '+(j.menit||15)+' menit lagi.':'ID atau PIN salah, atau akun tidak aktif.';return R()}
-  PB.id=id;PB.tok=j.token;PB.nama=j.nama||id;PB.peran=j.peran||'Pelihat';ls('gd_pid',id);ls('gd_ptok',j.token);ls('gd_pnama',PB.nama);ls('gd_pperan',PB.peran);pbMuat()}).catch(function(){U.err='Tidak dapat menghubungi server.';R()})}
+  PB.id=id;PB.tok=j.token;PB.nama=j.nama||id;PB.peran=j.peran||'Pelihat';if(j.kode)ls('gd_pkode',j.kode);ls('gd_pid',id);ls('gd_ptok',j.token);ls('gd_pnama',PB.nama);ls('gd_pperan',PB.peran);pbMuat()}).catch(function(){U.err='Tidak dapat menghubungi server.';R()})}
 function pbKeluar(){apiP('keluar').catch(function(){});pbLepas('')}
-function pbMuat(){PB.sib=true;PB.err='';R();Promise.all([apiP('ujiAntrean'),apiP('daftarSiswa'),apiP('butirBaca'),apiP('piagamBaca'),apiP('albumBaca'),apiP('kegiatanBaca')]).then(function(r){PB.L=(r[0]&&r[0].daftar)||[];PB.D=(r[1]&&r[1].daftar)||[];PB.B=(r[2]&&r[2].daftar)||[];PB.G=(r[3]&&r[3].daftar)||[];PB.A=(r[4]&&r[4].daftar)||[];PB.K=(r[5]&&r[5].daftar)||[];PB.sib=false;R()}).catch(function(e){if(e=='keluar')return;PB.sib=false;PB.err='Tidak dapat menghubungi server.';R()})}
+function pbMuat(){PB.sib=true;PB.err='';PB.KP=null;PB.AB=null;AB.st=null;R();Promise.all([apiP('ujiAntrean'),apiP('daftarSiswa'),apiP('butirBaca'),apiP('piagamBaca'),apiP('albumBaca'),apiP('kegiatanBaca')]).then(function(r){PB.L=(r[0]&&r[0].daftar)||[];PB.D=(r[1]&&r[1].daftar)||[];PB.B=(r[2]&&r[2].daftar)||[];PB.G=(r[3]&&r[3].daftar)||[];PB.A=(r[4]&&r[4].daftar)||[];PB.K=(r[5]&&r[5].daftar)||[];PB.sib=false;R()}).catch(function(e){if(e=='keluar')return;PB.sib=false;PB.err='Tidak dapat menghubungi server.';R()})}
 function pbNama(n){var d=(PB.D||[]).filter(function(x){return x.nisn==n})[0];return d?d.nama+' ('+d.kelas+')':n}
 function pbBisaIsi(){return PB.peran=='Penyunting'||PB.peran=='Pembina'}
 function pbR(){var m=$('mn'),n=$('nv');$('app').className='';
- var T=[['uji','✅','Uji'],['cek','☑️','Cek SKU'],['keg','📝','Kegiatan'],['siswa','👥','Siswa'],['lain','📚','Lainnya']];if(!pbBisaIsi())T=T.filter(function(t){return t[0]!='cek'&&t[0]!='keg'});
- n.innerHTML=T.map(function(t){return '<button class="'+(PB.tab==t[0]?'on':'')+'" onclick="PB.tab=\''+t[0]+'\';PB.pil=\'\';PB.err=\'\';PB.msg=\'\';R()"><i>'+t[1]+'</i>'+t[2]+'</button>'}).join('');
+ var T=[['uji','✅','Uji'],['abs','🙋','Absen'],['keg','📝','Kegiatan'],['siswa','👥','Adik-adik'],['komp','🗂️','Komponen'],['lap','🖨️','Laporan'],['lain','📚','Lainnya']];if(!pbBisaIsi())T=T.filter(function(t){return t[0]!='abs'&&t[0]!='keg'});
+ n.innerHTML=T.map(function(t){return '<button class="'+(PB.tab==t[0]?'on':'')+'" onclick="PB.tab=\''+t[0]+'\';PB.pil=\'\';PB.err=\'\';PB.msg=\'\';if(PB.tab==\'komp\')pbKompMuat();if(PB.tab==\'abs\'||PB.tab==\'lap\')pbAbsMuat();R()"><i>'+t[1]+'</i>'+t[2]+'</button>'}).join('');
  var pr=PB.peran,ket=pr=='Penyunting'?'Keputusan akhir ada padamu. Boleh mengisi dan memutuskan uji.':pr=='Pembina'?'Boleh mengisi foto, kegiatan, resume, dan ceklist uji SKU. Keputusan Lulus akhir oleh Penyunting.':'Hanya boleh melihat.';
  var top='<div class="card"><b>Pembina: '+h(PB.nama)+'</b> <span class="chip '+(pr=='Penyunting'?'s3':pr=='Pembina'?'s1':'s2')+'">'+h(pr)+'</span><div class="mu">'+ket+'</div></div>';
- var V={uji:pbUji,cek:pbCek,keg:pbKeg,siswa:pbSiswa,lain:pbLain}[PB.tab]||pbUji;
+ var V={uji:pbUjiGab,abs:pbAbs,keg:pbKeg,siswa:pbSiswa,komp:pbKomp,lap:pbLap,lain:pbLain}[PB.tab]||pbUji;
  m.innerHTML=top+(PB.sib?'<div class="card mu">Memuat…</div>':'')+(PB.err?'<div class="card err">'+h(PB.err)+'</div>':'')+V()}
+
+/* ---- Laporan & cetak (pembina) ---- */
+var LP={j:'hadir',dr:'',sp:''};
+var LPJ=[['hadir','Rekap kehadiran'],['abs','Daftar absen'],['keg','Laporan kegiatan'],['sku','Progres & peringkat SKU'],['sis','Daftar peserta didik']];
+function lpTgl(t){var m=/^(\d{4})-(\d{2})-(\d{2})/.exec(t||'');return m?m[3]+'/'+m[2]+'/'+m[1]:(t||'')}
+function lpDalam(t){t=String(t||'').slice(0,10);return (!LP.dr||t>=LP.dr)&&(!LP.sp||t<=LP.sp)}
+function lpKop(judul){var n=new Date(),tg=n.getDate()+'/'+(n.getMonth()+1)+'/'+n.getFullYear(),per=(LP.dr||LP.sp)?'<div>Periode: '+(LP.dr?lpTgl(LP.dr):'awal')+' s.d. '+(LP.sp?lpTgl(LP.sp):'sekarang')+'</div>':'';
+ return '<div style="text-align:center"><b style="font-size:16px">'+h(judul)+'</b><div>Gugus Depan 06.297 / 06.298 · Pangkalan MTs.S PPM Al Ihsan, Mukomuko</div>'+per+'</div>'}
+function lpTtd(){var n=new Date(),tg=n.getDate()+'/'+(n.getMonth()+1)+'/'+n.getFullYear();return '<div style="display:flex;justify-content:space-between;margin-top:28px;font-size:14px"><div style="text-align:center">Mengetahui,<br>Kamabigus<br><br><br><br>(................................)</div><div style="text-align:center">Mukomuko, '+tg+'<br>Pembina<br><br><br><br><b>'+h(PB.nama)+'</b></div></div>'}
+function lpTbl(head,rows,rt){return '<table style="width:100%;border-collapse:collapse;margin-top:10px;font-size:13px"><thead><tr>'+head.map(function(x,i){return '<th style="border:1px solid #777;padding:4px 6px;background:#f2e3e0;'+(rt&&rt.indexOf(i)>=0?'text-align:right':'text-align:left')+'">'+x+'</th>'}).join('')+'</tr></thead><tbody>'+rows.map(function(r){return '<tr>'+r.map(function(c,i){return '<td style="border:1px solid #999;padding:4px 6px;'+(rt&&rt.indexOf(i)>=0?'text-align:right':'')+'">'+c+'</td>'}).join('')+'</tr>'}).join('')+'</tbody></table>'}
+function lpNilai(str){var N=[0,30,60,100],t=0,l=0;for(var i=0;i<str.length;i++){var k=+str.charAt(i)||0;t+=N[k];if(k==3)l++}return [t,l,str.length]}
+function lpIsi(){var D=(PB.D||[]).slice().sort(function(a,b){return a.nama<b.nama?-1:1}),j=LP.j,o='';
+ if(j=='hadir'||j=='abs'){var A=(PB.AB||[]).filter(function(x){return lpDalam(x.tgl)});if(PB.AB==null)return '<div class="mu">Memuat absen…</div>';
+  if(j=='abs')return lpKop('DAFTAR ABSEN LATIHAN')+(A.length?lpTbl(['Tanggal','Kegiatan','Jenis','Hadir','Izin','Sakit','Alpa'],A.slice().sort(function(a,b){return a.tgl<b.tgl?-1:1}).map(function(x){var c={H:0,I:0,S:0,A:0};x.rows.forEach(function(r){c[r[1]]++});return [lpTgl(x.tgl),h(x.tema),h(x.jenis||''),c.H,c.I,c.S,c.A]}),[3,4,5,6]):'<div class="mu">Tidak ada absen pada periode ini.</div>')+lpTtd();
+  var R={};D.forEach(function(d){R[d.nisn]={H:0,I:0,S:0,A:0}});A.forEach(function(x){x.rows.forEach(function(r){if(R[r[0]]&&R[r[0]][r[1]]!=null)R[r[0]][r[1]]++})});
+  return lpKop('REKAP KEHADIRAN LATIHAN')+'<div style="text-align:center;font-size:13px">Jumlah pertemuan: '+A.length+'</div>'+lpTbl(['No','Nama','Kelas','H','I','S','A','% Hadir'],D.map(function(d,i){var c=R[d.nisn],t=c.H+c.I+c.S+c.A;return [i+1,h(d.nama),h(d.kelas||''),c.H,c.I,c.S,c.A,(t?Math.round(100*c.H/t):0)+'%']}),[0,3,4,5,6,7])+lpTtd()}
+ if(j=='keg'){var K=(PB.K||[]).filter(function(k){return lpDalam(k.tgl)}).slice().sort(function(a,b){return a.tgl<b.tgl?-1:1});
+  return lpKop('LAPORAN KEGIATAN')+(K.length?K.map(function(k,i){return '<div style="margin-top:12px;font-size:14px;page-break-inside:avoid"><b>'+(i+1)+'. '+h(k.tema)+'</b><div>'+lpTgl(k.tgl)+' · '+h(k.jenis||'')+' · '+h(k.tempat||'-')+' · '+h(k.status||'')+' · dicatat oleh '+h(k.penulis||'')+'</div><div style="white-space:pre-wrap;margin-top:3px">'+h(k.resume||'')+'</div></div>'}).join(''):'<div class="mu">Tidak ada kegiatan pada periode ini.</div>')+lpTtd()}
+ if(j=='sku'){var G={};D.forEach(function(d){var lv=d.target||'Ramu',v=lpNilai((d.s||{})[lv]||'');(G[lv]=G[lv]||[]).push({d:d,l:v[1],t:v[2]})});
+  Object.keys(G).forEach(function(k){G[k].sort(function(a,b){return b.l-a.l});G[k].forEach(function(x,i){x.r=(i>0&&G[k][i-1].l==x.l)?G[k][i-1].r:i+1})});
+  return lpKop('PROGRES & PERINGKAT PRESTASI SKU')+'<div style="text-align:center;font-size:13px">1 butir lulus (divalidasi pembina) = 1 bintang = nilai 100. Dibandingkan sesama yang menuju tingkat yang sama.</div>'+['Ramu','Rakit','Terap'].filter(function(k){return G[k]}).map(function(k){return '<div style="margin-top:12px"><b>Menuju '+k+' ('+G[k].length+' peserta didik)</b></div>'+lpTbl(['Rank','Nama','Kelas','Butir lulus','Bintang','Nilai'],G[k].map(function(x){return [x.r,h(x.d.nama),h(x.d.kelas||''),x.l+'/'+x.t,'⭐ × '+x.l,x.l*100]}),[0,3,5])}).join('')+lpTtd()}
+ return lpKop('DAFTAR PESERTA DIDIK')+lpTbl(['No','Nama','NISN','Kelas','Gudep','Tingkat','Target'],D.map(function(d,i){return [i+1,h(d.nama),h(d.nisn),h(d.kelas||''),h(d.satuan||''),h(d.tingkat||'-'),h(d.target||'-')]}),[0])+lpTtd()}
+function pbLap(){var o='<div class="card noprint"><h2>Laporan &amp; cetak</h2><div class="mu">Pilih laporan, atur periode bila perlu, lalu tekan Cetak. Di HP pilih "Simpan sebagai PDF" bila ingin berkas.</div>'
+ +'<label>Jenis laporan</label><select onchange="LP.j=this.value;R()">'+LPJ.map(function(x){return '<option value="'+x[0]+'"'+(LP.j==x[0]?' selected':'')+'>'+x[1]+'</option>'}).join('')+'</select>'
+ +(LP.j=='hadir'||LP.j=='abs'||LP.j=='keg'?'<label>Dari tanggal (opsional)</label><input type="date" value="'+LP.dr+'" onchange="LP.dr=this.value;R()"><label>Sampai tanggal (opsional)</label><input type="date" value="'+LP.sp+'" onchange="LP.sp=this.value;R()">':'')
+ +'<button class="b" onclick="window.print()">🖨️ Cetak / Simpan PDF</button></div>'
+ +'<div class="card lapcetak" style="background:#fff;color:#000">'+lpIsi()+'</div>';return o}
 function pbLain(){var t=[['materi','Materi'],['piagam','Piagam'],['album','Album']];return '<div class="tabs">'+t.map(function(x){return '<button class="'+(PB.sub==x[0]?'on':'')+'" onclick="PB.sub=\''+x[0]+'\';R()">'+x[1]+'</button>'}).join('')+'</div>'+({materi:pbMateri,piagam:pbPiagam,album:pbAlbum}[PB.sub]||pbMateri)()}
 function pbUji(){var L=PB.L||[];
- return '<div class="card"><h2>Pengajuan uji ('+L.length+')</h2><div class="mu">Periksa bukti siswa, lalu tekan Lulus atau Minta perbaikan. Keputusan tercatat atas nama akunmu.</div><button class="g" onclick="pbMuat()">⟳ Muat ulang</button>'+(PB.msg?'<div class="okm">'+h(PB.msg)+'</div>':'')+'</div>'
+ return '<div class="card"><h2>Pengajuan uji ('+L.length+')</h2><div class="mu">Periksa bukti peserta didik, lalu tekan Lulus atau Minta perbaikan. Keputusan tercatat atas nama akunmu.</div><button class="g" onclick="pbMuat()">⟳ Muat ulang</button>'+(PB.msg?'<div class="okm">'+h(PB.msg)+'</div>':'')+'</div>'
  +(L.length?L.map(function(x){var sel=PB.pil==x.id;return '<div class="card"><b>'+h(pbNama(x.nisn))+'</b><div class="mu">Butir <b>'+h(x.butir)+'</b> · diajukan '+h(x.diajukan)+'</div>'+(x.status=='Direkomendasikan'?'<div class="mu" style="color:#2e7d32">✔ Dicek pembina '+h(x.oleh||'')+'. Menunggu keputusan akhir.</div>':'')
   +(x.catatan?'<div style="margin-top:6px">'+h(x.catatan)+'</div>':'')+(/^https?:\/\//.test(x.tautan)?'<div style="margin-top:6px"><a href="'+h(x.tautan)+'" target="_blank" rel="noopener">Buka tautan bukti ↗</a></div>':'')
   +(x.foto?'<img src="'+x.foto+'" alt="bukti" style="max-width:100%;border-radius:10px;margin-top:8px">':'')
-  +(sel?'<label>Catatan untuk siswa (wajib bila minta perbaikan)</label><input id="pb_c" maxlength="500"><div style="display:flex;gap:8px;flex-wrap:wrap"><button class="b" onclick="pbPutus(\''+x.id+'\',\'Lulus\')">Lulus</button><button class="g" style="margin-top:12px" onclick="pbPutus(\''+x.id+'\',\'Perlu perbaikan\')">Minta perbaikan</button><button class="g" style="margin-top:12px" onclick="PB.pil=\'\';R()">Batal</button></div>':(PB.peran=='Penyunting'?'<button class="b" onclick="PB.pil=\''+x.id+'\';PB.msg=\'\';R()">Putuskan</button>':'<div class="mu" style="margin-top:6px">Keputusan akhir oleh Penyunting.</div>'))+'</div>'}).join(''):'<div class="card mu">Tidak ada pengajuan yang menunggu.</div>')}
+  +(sel?'<label>Catatan untuk adik (wajib bila minta perbaikan)</label><input id="pb_c" maxlength="500"><div style="display:flex;gap:8px;flex-wrap:wrap"><button class="b" onclick="pbPutus(\''+x.id+'\',\'Lulus\')">Lulus</button><button class="g" style="margin-top:12px" onclick="pbPutus(\''+x.id+'\',\'Perlu perbaikan\')">Minta perbaikan</button><button class="g" style="margin-top:12px" onclick="PB.pil=\'\';R()">Batal</button></div>':(PB.peran=='Penyunting'?'<button class="b" onclick="PB.pil=\''+x.id+'\';PB.msg=\'\';R()">Putuskan</button>':'<div class="mu" style="margin-top:6px">Keputusan akhir oleh Penyunting.</div>'))+'</div>'}).join(''):'<div class="card mu">Tidak ada pengajuan yang menunggu.</div>')}
 function pbPutus(uid,hasil){var c=($('pb_c')||{}).value||'';c=c.trim();if(hasil!='Lulus'&&!c){PB.err='Tulis catatan perbaikan untuk siswa.';return R()}PB.err='';
  apiP('ujiPutus',{uid:uid,hasil:hasil,catatan:c,src:'app'}).then(function(j){if(!j.ok){PB.err=j.error=='sudah_diputus'?'Sudah diputuskan sebelumnya.':'Gagal: '+(j.error||'');return pbMuat()}
   PB.L=PB.L.filter(function(x){return x.id!=uid});PB.pil='';PB.msg=hasil=='Lulus'?'Butir diluluskan.':'Perbaikan diminta.';R()}).catch(function(e){if(e!='keluar'){PB.err='Gagal mengirim.';R()}})}
 function pbSiswa(){var D=PB.D||[],q=(PB.q||'').toLowerCase(),L=D.filter(function(x){return !q||(x.nama+' '+x.kelas+' '+x.nisn).toLowerCase().indexOf(q)>=0});
- return '<div class="card"><h2>Siswa ('+D.length+')</h2><input id="pb_q" placeholder="Cari nama, kelas, NISN" value="'+h(PB.q)+'" oninput="PB.q=this.value;pbCari()"></div><div id="pb_l">'+pbBaris(L)+'</div>'}
+ return '<div class="card"><h2>Peserta didik ('+D.length+')</h2><input id="pb_q" placeholder="Cari nama, kelas, NISN" value="'+h(PB.q)+'" oninput="PB.q=this.value;pbCari()"></div><div id="pb_l">'+pbBaris(L)+'</div>'}
 function pbBaris(L){return L.length?L.map(function(x){var s=x.s||{},lv=x.target&&s[x.target]?x.target:'Ramu',str=s[lv]||'',n=str.length,l=(str.match(/3/g)||[]).length,pc=n?Math.round(100*l/n):0;
  return '<div class="card" style="padding:10px 14px"><b>'+h(x.nama)+'</b> <span class="mu">'+h(x.kelas)+' · '+h(x.satuan)+'</span><div class="mu">Tingkat '+h(x.tingkat||'-')+' · Target '+h(x.target||'-')+' · '+l+'/'+n+' butir '+h(lv)+' ('+pc+'%)</div><div class="bar"><i style="width:'+pc+'%"></i></div></div>'}).join(''):'<div class="card mu">Tidak ada yang cocok.</div>'}
 function pbCari(){var D=PB.D||[],q=(PB.q||'').toLowerCase();$('pb_l').innerHTML=pbBaris(D.filter(function(x){return !q||(x.nama+' '+x.kelas+' '+x.nisn).toLowerCase().indexOf(q)>=0}))}
 
 function pbMateri(){var B=(PB.B||[]).filter(function(b){return b[1]==PB.lv}),ar={},ord=[];B.forEach(function(b){if(!ar[b[2]]){ar[b[2]]=[];ord.push(b[2])}ar[b[2]].push(b)});
- var tb='<div class="tabs">'+['Ramu','Rakit','Terap'].map(function(x){return '<button class="'+(PB.lv==x?'on':'')+'" onclick="PB.lv=\''+x+'\';R()">'+x+'</button>'}).join('')+'</div>';
+ var tb=ebCard()+'<div class="tabs">'+['Ramu','Rakit','Terap'].map(function(x){return '<button class="'+(PB.lv==x?'on':'')+'" onclick="PB.lv=\''+x+'\';R()">'+x+'</button>'}).join('')+'</div>';
  if(!B.length)return tb+'<div class="card mu">Materi belum dikirim dari SIM.</div>';
  return tb+ord.map(function(a){return '<div class="card"><h2>'+h(a)+'</h2>'+ar[a].map(function(b){return '<details><summary><b>'+h(b[0])+'</b> '+h(b[3])+'</summary>'+(b[4]?'<div class="mu"><b>Cara uji:</b> '+h(b[4])+'</div>':'')+(b[5]?'<div class="mu"><b>Bukti:</b> '+h(b[5])+'</div>':'')+(b[6]?'<div class="mu"><b>Catatan:</b> '+h(b[6])+'</div>':'')+(!b[4]&&!b[5]&&!b[6]?'<div class="mu">Belum ada keterangan tambahan.</div>':'')+'</details>'}).join('')+'</div>'}).join('')}
-function pbPiagam(){var G=PB.G||[];return '<div class="card"><h2>Piagam &amp; penghargaan ('+G.length+')</h2><div class="mu">Seluruh siswa. Hanya melihat.</div></div>'+(G.length?G.map(function(x){return '<div class="pg"><b>'+h(x.nama)+'</b><div>'+h(x.jenis)+'</div>'+(x.ket?'<div>'+h(x.ket)+'</div>':'')+'<div>'+h(x.tgl||'')+(x.nomor?' · No. '+h(x.nomor):'')+'</div></div>'}).join(''):'<div class="card mu">Belum ada piagam yang dikirim dari SIM.</div>')}
+function pbPiagam(){var G=PB.G||[];return '<div class="card"><h2>Piagam &amp; penghargaan ('+G.length+')</h2><div class="mu">Seluruh peserta didik. Hanya melihat.</div></div>'+(G.length?G.map(function(x){return '<div class="pg"><b>'+h(x.nama)+'</b><div>'+h(x.jenis)+'</div>'+(x.ket?'<div>'+h(x.ket)+'</div>':'')+'<div>'+h(x.tgl||'')+(x.nomor?' · No. '+h(x.nomor):'')+'</div></div>'}).join(''):'<div class="card mu">Belum ada piagam yang dikirim dari SIM.</div>')}
 function pbAlbum(){var A=PB.A||[];return '<div class="card"><h2>Album gudep ('+A.length+')</h2>'+(pbBisaIsi()?'<label>Untuk</label><select id="al_u"><option value="">Semua anggota gudep</option>'+(PB.D||[]).map(function(x){return '<option value="'+h(x.nisn)+'">Album pribadi: '+h(x.nama)+'</option>'}).join('')+'</select><label>Keterangan</label><input id="al_j" maxlength="120"><label>Pilih foto</label><input type="file" accept="image/*" onchange="pbAlbumTambah(this)">'+(PB.msg?'<div class="okm">'+h(PB.msg)+'</div>':''):'')+'</div>'+(A.length?'<div class="grid">'+A.map(function(x,i){return '<img src="'+x.foto+'" alt="'+h(x.judul)+'" onclick="pbLb('+i+')">'}).join('')+'</div>':'<div class="card mu">Belum ada foto album gudep.</div>')}
 function pbLb(i){var x=(PB.A||[])[i];if(!x)return;$('lb').className='on';$('lb').innerHTML='<img src="'+x.foto+'" alt=""><div style="margin-top:8px">'+h(x.judul||'')+'</div><div><a href="#" style="color:#fff" onclick="lbTutup();return false">Tutup</a></div>'}
 
-function pbOpt(sel){return '<option value="">— pilih siswa —</option>'+(PB.D||[]).slice().sort(function(a,b){return a.nama<b.nama?-1:1}).map(function(x){return '<option value="'+h(x.nisn)+'"'+(x.nisn==sel?' selected':'')+'>'+h(x.nama)+' ('+h(x.kelas)+')</option>'}).join('')}
-function pbCek(){var d=(PB.D||[]).filter(function(x){return x.nisn==PB.cs})[0],o='<div class="card"><h2>Ceklist uji SKU</h2><div class="mu">Pilih siswa, lalu centang butir yang sudah kamu uji langsung. Keputusan Lulus akhir oleh Penyunting.</div><label>Siswa</label><select id="cs_s" onchange="PB.cs=this.value;PB.pil=\'\';R()">'+pbOpt(PB.cs)+'</select>'+(PB.msg?'<div class="okm">'+h(PB.msg)+'</div>':'')+'</div>';
+function pbOpt(sel){return '<option value="">— pilih adik —</option>'+(PB.D||[]).slice().sort(function(a,b){return a.nama<b.nama?-1:1}).map(function(x){return '<option value="'+h(x.nisn)+'"'+(x.nisn==sel?' selected':'')+'>'+h(x.nama)+' ('+h(x.kelas)+')</option>'}).join('')}
+function pbCek(){var d=(PB.D||[]).filter(function(x){return x.nisn==PB.cs})[0],o='<div class="card"><h2>Ceklist uji SKU</h2><div class="mu">Pilih adik, lalu centang butir yang sudah kamu uji langsung. Keputusan Lulus akhir oleh Penyunting.</div><label>Peserta didik</label><select id="cs_s" onchange="PB.cs=this.value;PB.pil=\'\';R()">'+pbOpt(PB.cs)+'</select>'+(PB.msg?'<div class="okm">'+h(PB.msg)+'</div>':'')+'</div>';
  if(!d)return o;var lv=d.target||'Ramu',B=(PB.B||[]).filter(function(b){return b[1]==lv}),str=(d.s&&d.s[lv])||'';
  if(!B.length)return o+'<div class="card mu">Materi belum dikirim dari SIM.</div>';
  return o+'<div class="card"><h2>'+h(d.nama)+' · '+h(lv)+'</h2>'+B.map(function(b,i){var st=+str.charAt(i)||0,w=(PB.L||[]).filter(function(x){return x.nisn==d.nisn&&x.butir==b[0]})[0],ket='';
@@ -256,7 +308,7 @@ function pbCek(){var d=(PB.D||[]).filter(function(x){return x.nisn==PB.cs})[0],o
   else ket=(PB.pil==b[0]?'':'<button class="g" style="margin:0;padding:5px 10px" onclick="PB.pil=\''+h(b[0])+'\';R()">Teruji ✔</button>');
   return '<div class="row"><b>'+h(b[0])+'</b><span>'+h(b[3])+'</span>'+ket+(PB.pil==b[0]?'<div style="flex-basis:100%"><label>Catatan (opsional)</label><input id="ck_c" maxlength="400" placeholder="mis. praktik benar, 3 kali"><div style="display:flex;gap:8px"><button class="b" onclick="pbCekKirim(\''+h(b[0])+'\')">Simpan ceklist</button><button class="g" style="margin-top:12px" onclick="PB.pil=\'\';R()">Batal</button></div></div>':'')+'</div>'}).join('')+'</div>'}
 function pbCekKirim(bt){var c=($('ck_c')||{}).value||'';PB.err='';apiP('cekUji',{nisn:PB.cs,butir:bt,catatan:c}).then(function(j){
-  if(!j.ok){PB.err=({sudah_diajukan:'Butir ini sudah dicek atau diajukan.',sudah_lulus:'Butir ini sudah lulus.',butir:'Butir bukan tingkat target siswa.',tidak_boleh:'Akun ini tidak boleh mengisi.'})[j.error]||'Gagal: '+(j.error||'');return R()}
+  if(!j.ok){PB.err=({sudah_diajukan:'Butir ini sudah dicek atau diajukan.',sudah_lulus:'Butir ini sudah lulus.',butir:'Butir bukan tingkat target peserta didik.',tidak_boleh:'Akun ini tidak boleh mengisi.'})[j.error]||'Gagal: '+(j.error||'');return R()}
   PB.L=(PB.L||[]).concat([{id:j.id,nisn:PB.cs,butir:bt,status:'Direkomendasikan',oleh:PB.nama,diajukan:'baru saja',catatan:c}]);PB.pil='';PB.msg='Tersimpan. Menunggu keputusan akhir Penyunting.';R()}).catch(function(e){if(e!='keluar'){PB.err='Gagal mengirim.';R()}})}
 function hariIni(){var d=new Date();return d.getFullYear()+'-'+('0'+(d.getMonth()+1)).slice(-2)+'-'+('0'+d.getDate()).slice(-2)}
 var KJ=['Latihan Mingguan','Pelantikan','Bakti Lingkungan','Perkemahan','Lomba','Lainnya'];
@@ -274,6 +326,45 @@ function pbKegKirim(){var g=function(i){return ($(i)||{}).value||''},f=$('kg_f')
   PB.K=[{id:j.id,tgl:o.tgl,tema:o.tema,tempat:o.tempat,jenis:o.jenis,status:o.status,resume:o.resume,penulis:PB.nama,sim:false}].concat(PB.K||[]);PB.msg='Kegiatan tersimpan.';
   if(f)kecil(f,640,0,44000,function(d){apiP('albumTambahPembina',{foto:d,judul:o.tema}).then(function(){PB.msg='Kegiatan dan foto tersimpan.';R()})},false);else R()}).catch(function(e){if(e!='keluar'){PB.err='Gagal mengirim.';R()}})}
 function pbKegHapus(id){if(!confirm('Hapus kegiatan ini?'))return;apiP('kegiatanHapus',{kid:id}).then(function(j){if(!j.ok){PB.err=j.error=='tidak_boleh'?'Sudah dicatat di SIM, tidak bisa dihapus dari sini.':'Gagal.';return R()}PB.K=PB.K.filter(function(k){return k.id!=id});R()}).catch(function(){})}
-function pbAlbumTambah(inp){var f=inp.files[0];if(!f)return;var u=($('al_u')||{}).value||'',t=($('al_j')||{}).value||'';PB.err='';PB.msg='Mengirim…';R();kecil(f,640,0,44000,function(d){apiP('albumTambahPembina',{foto:d,judul:t,nisn:u}).then(function(j){if(!j.ok){PB.msg='';PB.err='Gagal: '+(j.error||'');return R()}if(!u)PB.A=[{id:j.id,judul:t,tgl:'baru saja',foto:d}].concat(PB.A||[]);PB.msg=u?'Foto ditambahkan ke album siswa.':'Foto ditambahkan ke album gudep.';R()}).catch(function(e){if(e!='keluar'){PB.msg='';PB.err='Gagal mengirim.';R()}})},false)}
+function pbAlbumTambah(inp){var f=inp.files[0];if(!f)return;var u=($('al_u')||{}).value||'',t=($('al_j')||{}).value||'';PB.err='';PB.msg='Mengirim…';R();kecil(f,640,0,44000,function(d){apiP('albumTambahPembina',{foto:d,judul:t,nisn:u}).then(function(j){if(!j.ok){PB.msg='';PB.err='Gagal: '+(j.error||'');return R()}if(!u)PB.A=[{id:j.id,judul:t,tgl:'baru saja',foto:d}].concat(PB.A||[]);PB.msg=u?'Foto ditambahkan ke album peserta didik.':'Foto ditambahkan ke album gudep.';R()}).catch(function(e){if(e!='keluar'){PB.msg='';PB.err='Gagal mengirim.';R()}})},false)}
+
+function pbKompMuat(force){if(PB.KP&&!force)return;PB.sib=true;apiP('komponenBaca').then(function(j){PB.KP=(j&&j.daftar)||[];PB.sib=false;if(!PB.kk&&PB.KP.length)PB.kk=PB.KP[0][0];R()}).catch(function(e){PB.sib=false;if(e!='keluar'){PB.err='Komponen gagal dimuat. Coba tekan ⟳.';R()}})}
+function pbKompList(){var K=(PB.KP||[]).filter(function(r){return r[0]==PB.kk}),q=(PB.kq||'').toLowerCase().trim();if(q)K=K.filter(function(r){return (r[1]+' '+r[3]+' '+r[4]).toLowerCase().indexOf(q)>=0});
+ if(!K.length)return '<div class="card mu">'+(q?'Tidak ada yang cocok.':'Belum ada isi.')+'</div>';
+ var G=[],idx={};K.forEach(function(r){if(idx[r[1]]===undefined){idx[r[1]]=G.length;G.push([r[1],[]])}G[idx[r[1]]][1].push(r)});
+ return G.map(function(g){return '<details class="card"'+(q?' open':'')+'><summary><b>'+h(g[0])+'</b> <span class="mu">('+g[1].length+')</span></summary>'+g[1].map(function(r){return '<details style="margin-top:8px;border-top:1px solid #eadbd7;padding-top:6px"><summary>'+h(r[3])+'</summary><div style="white-space:pre-wrap;margin-top:6px;font-size:15px;line-height:1.5">'+h(r[4])+'</div></details>'}).join('')+'</details>'}).join('')}
+function pbKompCari(v){PB.kq=v;var e=$('kp_l');if(e)e.innerHTML=pbKompList()}
+function pbKomp(){if(!PB.KP)return '<div class="card mu">'+(PB.sib?'Memuat komponen…':'Komponen belum dimuat. <button class="g" onclick="pbKompMuat(true)">Muat</button>')+'</div>';
+ if(!PB.KP.length)return '<div class="card mu">Komponen belum dikirim dari SIM. Di SIM: Komp 1 &gt; 01 · Buku Induk &gt; Portal Siswa &gt; Kirim ke portal.</div>';
+ var N=[];PB.KP.forEach(function(r){if(N.indexOf(r[0])<0)N.push(r[0])});
+ return '<div class="card"><h2>Komponen gudep</h2><div class="mu">Hanya untuk dilihat. Pengeditan dilakukan di SIM.</div><label>Pilih komponen</label><select onchange="PB.kk=this.value;R()">'+N.map(function(n){return '<option'+(n==PB.kk?' selected':'')+'>'+h(n)+'</option>'}).join('')+'</select><label>Cari</label><input id="kp_q" placeholder="Cari judul atau isi" value="'+h(PB.kq)+'" oninput="pbKompCari(this.value)"></div><div id="kp_l">'+pbKompList()+'</div>'}
+
+var AB={tgl:'',tema:'Latihan rutin',jenis:'Latihan Mingguan',st:null,grp:''};
+function pbUjiGab(){if(!pbBisaIsi())return pbUji();var u=PB.us||'antrean',t=[['antrean','Antrean uji'],['cek','Ceklist SKU']];return '<div class="tabs">'+t.map(function(x){return '<button class="'+(u==x[0]?'on':'')+'" onclick="PB.us=\''+x[0]+'\';R()">'+x[1]+'</button>'}).join('')+'</div>'+(u=='cek'?pbCek():pbUji())}
+function pbAbsMuat(f){if(PB.AB&&!f)return;apiP('absenBaca').then(function(j){PB.AB=(j&&j.daftar)||[];R()}).catch(function(e){if(e!='keluar'){PB.AB=[];R()}})}
+var ABW={H:['Hadir','#2e7d32'],I:['Izin','#1565c0'],S:['Sakit','#b26a00'],A:['Alpa','#b71c1c']};
+function absRows(){var G=AB.grp;return (PB.D||[]).filter(function(d){return !G||d.satuan==G}).sort(function(a,b){return a.nama<b.nama?-1:1}).map(function(d){var v=AB.st[d.nisn]||'H';
+ return '<div style="padding:9px 0;border-top:1px solid #eadbd7"><div><b>'+h(d.nama)+'</b> <span class="mu">'+h(d.kelas||'')+' · '+h(d.satuan||'')+'</span></div><div style="display:flex;gap:6px;margin-top:6px">'+['H','I','S','A'].map(function(k){var on=v==k;return '<button style="flex:1;padding:9px 0;border-radius:9px;font:inherit;font-weight:700;border:2px solid '+ABW[k][1]+';background:'+(on?ABW[k][1]:'#fff')+';color:'+(on?'#fff':ABW[k][1])+'" onclick="absSet(\''+d.nisn+'\',\''+k+'\')">'+ABW[k][0]+'</button>'}).join('')+'</div></div>'}).join('')}
+function absSum(){var c={H:0,I:0,S:0,A:0};(PB.D||[]).forEach(function(d){c[AB.st[d.nisn]||'H']++});return '<b style="color:#2e7d32">Hadir '+c.H+'</b> · <b style="color:#1565c0">Izin '+c.I+'</b> · <b style="color:#b26a00">Sakit '+c.S+'</b> · <b style="color:#b71c1c">Alpa '+c.A+'</b> dari '+(PB.D||[]).length}
+function absSet(n,v){AB.st[n]=v;var l=$('ab_l'),y=$('ab_s');if(l)l.innerHTML=absRows();if(y)y.innerHTML=absSum()}
+function absSemua(v){(PB.D||[]).forEach(function(d){if(!AB.grp||d.satuan==AB.grp)AB.st[d.nisn]=v});absSet('_','H')}
+function pbAbs(){if(!AB.tgl)AB.tgl=hariIni();if(!AB.st)AB.st={};(PB.D||[]).forEach(function(d){if(!AB.st[d.nisn])AB.st[d.nisn]='H'});
+ var S=[];(PB.D||[]).forEach(function(d){if(d.satuan&&S.indexOf(d.satuan)<0)S.push(d.satuan)});
+ var o='<div class="card"><h2>Absen latihan</h2><div class="mu">Semua dianggap Hadir. Ketuk hanya yang tidak hadir, lalu Simpan. Masuk ke Kehadiran SIM tanpa persetujuan.</div>'
+ +'<label>Tanggal</label><input type="date" value="'+h(AB.tgl)+'" onchange="AB.tgl=this.value"><label>Nama kegiatan</label><input maxlength="120" value="'+h(AB.tema)+'" oninput="AB.tema=this.value">'
+ +'<label>Jenis</label><select onchange="AB.jenis=this.value">'+KJ.map(function(x){return '<option'+(x==AB.jenis?' selected':'')+'>'+h(x)+'</option>'}).join('')+'</select>'
+ +(S.length>1?'<label>Tampilkan</label><select onchange="AB.grp=this.value;absSet(\'_\',\'H\')"><option value="">Semua gudep</option>'+S.map(function(x){return '<option'+(x==AB.grp?' selected':'')+'>'+h(x)+'</option>'}).join('')+'</select>':'')
+ +'<div style="display:flex;gap:8px;margin-top:10px"><button class="g" style="margin:0" onclick="absSemua(\'H\')">Semua hadir</button></div></div>'
+ +'<div class="card"><div id="ab_s">'+absSum()+'</div><div id="ab_l">'+absRows()+'</div><button class="b" onclick="pbAbsSimpan()">Simpan absen</button>'+(PB.msg?'<div class="okm">'+h(PB.msg)+'</div>':'')+'</div>';
+ var A=PB.AB||[];o+='<div class="card"><h2>Absen tersimpan ('+A.length+')</h2>'+(A.length?A.map(function(x,i){var c={H:0,I:0,S:0,A:0};x.rows.forEach(function(r){c[r[1]]++});return '<div class="row"><div style="flex:1"><b>'+h(x.tema)+'</b><div class="mu">'+h(x.tgl)+' · H'+c.H+' I'+c.I+' S'+c.S+' A'+c.A+' · '+h(x.penulis)+'</div></div><button class="g" style="margin:0;padding:6px 12px" onclick="absBuka('+i+')">Buka</button></div>'}).join(''):'<div class="mu">Belum ada.</div>')+'</div>';return o}
+function absBuka(i){var x=(PB.AB||[])[i];if(!x)return;AB.tgl=x.tgl;AB.tema=x.tema;AB.jenis=x.jenis||AB.jenis;AB.st={};x.rows.forEach(function(r){AB.st[r[0]]=r[1]});PB.msg='Absen dibuka. Ubah lalu Simpan.';R();window.scrollTo(0,0)}
+function pbAbsSimpan(){var rows=(PB.D||[]).map(function(d){return [d.nisn,AB.st[d.nisn]||'H']});PB.err='';PB.msg='';
+ if(!AB.tgl){PB.err='Isi tanggal.';return R()}if((AB.tema||'').trim().length<3){PB.err='Isi nama kegiatan.';return R()}
+ apiP('absenSimpan',{tgl:AB.tgl,tema:AB.tema.trim(),jenis:AB.jenis,rows:rows}).then(function(j){if(!j.ok){PB.err=({tanggal:'Tanggal tidak valid.',tema:'Isi nama kegiatan.',kosong:'Tidak ada peserta didik untuk diabsen.',tidak_boleh:'Akun ini tidak boleh mengisi.'})[j.error]||'Gagal: '+(j.error||'');return R()}
+  PB.msg='Absen tersimpan ('+j.jumlah+' siswa).';PB.AB=null;pbAbsMuat(true);R()}).catch(function(e){if(e!='keluar'){PB.err='Gagal mengirim.';R()}})}
+
+function ebBuka(){if(PB.tok){var kd=ls('gd_pkode');if(kd){try{var c=JSON.parse(localStorage.getItem('lvl_codes')||'[]');if(c.indexOf(kd)<0){c.push(kd);localStorage.setItem('lvl_codes',JSON.stringify(c))}}catch(e){}}}var f=$('ebf');if(!f.getAttribute('src'))f.setAttribute('src','ebook/index.html');$('eb').className='on'}
+function ebTutup(){$('eb').className=''}
+function ebCard(){return '<div class="card" style="border:2px solid #b71c1c"><b style="font-size:18px">📘 E-book Level Up!</b><div class="mu">Materi SKU asli lengkap dengan gambar, uji nyali, dan ceklis. Ramu terbuka. Rakit, Terap, dan SKK terbuka dengan kode pelantikan dari pembina.</div><button class="b" onclick="ebBuka()">Buka e-book</button></div>'}
 R();insShow();
-</script></body></html>
+</script><div id="eb"><div class="ebh"><b>📘 E-book Level Up!</b><button onclick="ebTutup()">Tutup</button></div><iframe id="ebf" title="E-book Level Up"></iframe></div></body></html>

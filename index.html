@@ -7,7 +7,7 @@
 <meta name="theme-color" content="#b71c1c">
 <meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Gudep Umar"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<style>
+<style>html{background:#7f1d1d}
 :root{--r:#b71c1c;--rd:#7f1212;--bg:#fbf4f2;--ink:#2a1a18;--mu:#7a6460;--ok:#2e7d32;--wa:#e0a800;--ln:#ead6d2}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}html,body{margin:0;height:100%}
 body{font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--ink);padding-top:env(safe-area-inset-top)}
@@ -18,10 +18,10 @@ body{font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background
 .go{background:#eab308;color:#7f1d1d;font-weight:800;font-size:17px;border:0;border-radius:99px;padding:14px 38px;margin-top:10px;cursor:pointer}
 #ins button{margin-top:6px;border:1px solid var(--r);background:#fff;color:var(--r);border-radius:8px;padding:8px 14px;font:inherit;font-weight:700}
 #spl{position:fixed;inset:0;z-index:40;pointer-events:none;display:block}
-#spl .h{position:absolute;top:0;bottom:0;width:50%;overflow:hidden;background:#000;transition:transform .9s cubic-bezier(.7,0,.2,1)}
+#spl .h{position:absolute;top:0;bottom:0;width:50%;overflow:hidden;background:transparent;transition:transform .9s cubic-bezier(.7,0,.2,1)}
 #spl .hl{left:0}#spl .hr{right:0}
-#spl .h i{position:absolute;top:0;bottom:0;width:100vw;background:#000 url(img/ummu.jpg) center/min(78vw,380px) no-repeat}
-#fl{position:absolute;inset:0;background:#000;display:flex;align-items:center;justify-content:center;perspective:900px}
+#spl .h i{position:absolute;top:0;bottom:0;width:100vw;background:transparent url(img/ummu-bulat.png) center/min(78vw,380px) no-repeat}
+#fl{position:absolute;inset:0;background:transparent;display:flex;align-items:center;justify-content:center;perspective:900px}
 #fl div{width:min(78vw,380px);height:min(78vw,380px);position:relative;transform-style:preserve-3d;transition:transform .9s ease-in-out}
 #fl img{position:absolute;inset:0;width:100%;height:100%;backface-visibility:hidden;-webkit-backface-visibility:hidden}
 #fl img+img{transform:rotateY(180deg)}#fl.flip div{transform:rotateY(180deg)}
@@ -61,7 +61,7 @@ details{border-top:1px solid var(--ln);padding:6px 0}summary{cursor:pointer;font
  <div class="lg"><span class="pill">06.297 – UMAR BIN KHATTAB</span><span class="pill">06.298 – UMMU SALAMAH</span></div></div>
  <button class="go" onclick="masukApp()">MASUK KE SISTEM ➔</button>
 </div>
-<div id="spl"><div class="h hl"><i></i></div><div class="h hr"><i></i></div><div id="fl"><div><img src="img/umar.jpg" alt=""><img src="img/ummu.jpg" alt=""></div></div></div>
+<div id="spl"><div class="h hl"><i></i></div><div class="h hr"><i></i></div><div id="fl"><div><img src="img/umar-bulat.png" alt=""><img src="img/ummu-bulat.png" alt=""></div></div></div>
 <div id="app" class="hide">
  <header><img src="img/umar.jpg" alt=""><b>Portal Siswa<small>Gudep 06.297 · 06.298</small></b><button onclick="muat()">⟳</button><button onclick="keluar()">Keluar</button></header>
  <main id="mn"></main><nav id="nv"></nav>

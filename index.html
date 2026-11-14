@@ -100,7 +100,7 @@ function muat(auto){if(PB.tok&&U.mode!='x'&&!U.me){pbMuat();return}U.err='';U.ms
   U.me=r.ok;ls('gd_cache',JSON.stringify(r.ok));if(auto||!U.me)U.tab=(r.ok.status=='Belum diisi'||r.ok.status=='Perlu diperbaiki')?'home':U.tab;R()
  }).catch(function(){var c=ls('gd_cache');if(c&&!U.me){try{U.me=JSON.parse(c);U.off=true;R();return}catch(e){}}U.err='Tidak dapat menghubungi server. Periksa internet.';R()})}
 function keluar(){if(PB.tok)return pbKeluar();ls('gd_p',null);ls('gd_cache',null);U={mode:'masuk',tab:'home',me:null,nisn:'',pin:'',msg:'',err:'',foto:'',aj:'',fotoB:'',alb:'gudep',fotoA:'',lvl:'',off:false};R()}
-function go(t){U.tab=t;U.err='';U.msg='';R();scrollTo(0,0)}
+function go(t){U.tab=t;U.err='';U.msg='';R();scrollTo(0,0);if(t=='materi')ebBuka()}
 function terkunci(){return U.me&&(U.me.status=='Belum diisi'||U.me.status=='Perlu diperbaiki')}
 function R(){if(PB.tok)return pbR();var m=$('mn'),n=$('nv');if(!U.me){n.innerHTML='';m.innerHTML=viewMasuk();insShow();return}
  if(terkunci())U.tab='home';
@@ -117,7 +117,7 @@ function viewMasuk(){var d=U.mode=='daftar';
  +(d?'<label>Ulangi PIN</label><input id="f_p2" type="password" inputmode="numeric" maxlength="6">':'<label style="font-weight:400"><input id="f_i" type="checkbox" style="width:auto" checked> Tetap masuk di HP ini</label>')
  +'<button class="b" onclick="'+(d?'daftar()':'masuk()')+'">'+(d?'Buat akun':'Masuk')+'</button>'
  +(U.err?'<div class="err">'+h(U.err)+'</div>':'')+(U.msg?'<div class="okm">'+h(U.msg)+'</div>':'')
- +'<div class="mu" style="margin-top:10px">Lupa PIN? Hubungi pembina untuk mengatur ulang.</div></div><div class="card" id="ins" style="font-size:14px"></div>'}
+ +'<div class="mu" style="margin-top:10px">Lupa PIN? Hubungi pembina untuk mengatur ulang.</div><div class="mu" style="text-align:center;margin-top:8px;font-size:12px">Baseline 1.0 · Versi 64</div></div><div class="card" id="ins" style="font-size:14px"></div>'}
 function daftar(){var n=$('f_n').value.replace(/\D/g,''),p=$('f_p').value,p2=$('f_p2').value;U.nisn=n;U.err='';U.msg='';if(p!=p2){U.err='Kedua PIN tidak sama.';return R()}
  api('daftar',n,p).then(function(r){if(r.error){U.err=PESAN[r.error]||'Gagal.';return R()}U.mode='masuk';U.msg='Akun dibuat. Silakan masuk.';R()}).catch(function(){U.err='Tidak dapat menghubungi server.';R()})}
 function masuk(){var n=$('f_n').value.replace(/\D/g,''),p=$('f_p').value,ing=$('f_i')&&$('f_i').checked;U.nisn=n;U.pin=p;U.err='';U.msg='';
@@ -243,7 +243,7 @@ function pbNama(n){var d=(PB.D||[]).filter(function(x){return x.nisn==n})[0];ret
 function pbBisaIsi(){return PB.peran=='Penyunting'||PB.peran=='Pembina'}
 function pbR(){var m=$('mn'),n=$('nv');$('app').className='';
  var T=[['uji','✅','Uji'],['abs','🙋','Absen'],['keg','📝','Kegiatan'],['siswa','👥','Adik-adik'],['komp','🗂️','Komponen'],['lap','🖨️','Laporan'],['lain','📚','Lainnya']];if(!pbBisaIsi())T=T.filter(function(t){return t[0]!='abs'&&t[0]!='keg'});
- n.innerHTML=T.map(function(t){return '<button class="'+(PB.tab==t[0]?'on':'')+'" onclick="PB.tab=\''+t[0]+'\';PB.pil=\'\';PB.err=\'\';PB.msg=\'\';if(PB.tab==\'komp\')pbKompMuat();if(PB.tab==\'abs\'||PB.tab==\'lap\')pbAbsMuat();R()"><i>'+t[1]+'</i>'+t[2]+'</button>'}).join('');
+ n.innerHTML=T.map(function(t){return '<button class="'+(PB.tab==t[0]?'on':'')+'" onclick="PB.tab=\''+t[0]+'\';PB.pil=\'\';PB.err=\'\';PB.msg=\'\';if(PB.tab==\'komp\')pbKompMuat();if(PB.tab==\'abs\'||PB.tab==\'lap\')pbAbsMuat();R();if(PB.tab==\'lain\'&&PB.sub==\'materi\')ebBuka()"><i>'+t[1]+'</i>'+t[2]+'</button>'}).join('');
  var pr=PB.peran,ket=pr=='Penyunting'?'Keputusan akhir ada padamu. Boleh mengisi dan memutuskan uji.':pr=='Pembina'?'Boleh mengisi foto, kegiatan, resume, dan ceklist uji SKU. Keputusan Lulus akhir oleh Penyunting.':'Hanya boleh melihat.';
  var top='<div class="card"><b>Pembina: '+h(PB.nama)+'</b> <span class="chip '+(pr=='Penyunting'?'s3':pr=='Pembina'?'s1':'s2')+'">'+h(pr)+'</span><div class="mu">'+ket+'</div></div>';
  var V={uji:pbUjiGab,abs:pbAbs,keg:pbKeg,siswa:pbSiswa,komp:pbKomp,lap:pbLap,lain:pbLain}[PB.tab]||pbUji;
@@ -275,7 +275,7 @@ function pbLap(){var o='<div class="card noprint"><h2>Laporan &amp; cetak</h2><d
  +(LP.j=='hadir'||LP.j=='abs'||LP.j=='keg'?'<label>Dari tanggal (opsional)</label><input type="date" value="'+LP.dr+'" onchange="LP.dr=this.value;R()"><label>Sampai tanggal (opsional)</label><input type="date" value="'+LP.sp+'" onchange="LP.sp=this.value;R()">':'')
  +'<button class="b" onclick="window.print()">🖨️ Cetak / Simpan PDF</button></div>'
  +'<div class="card lapcetak" style="background:#fff;color:#000">'+lpIsi()+'</div>';return o}
-function pbLain(){var t=[['materi','Materi'],['piagam','Piagam'],['album','Album']];return '<div class="tabs">'+t.map(function(x){return '<button class="'+(PB.sub==x[0]?'on':'')+'" onclick="PB.sub=\''+x[0]+'\';R()">'+x[1]+'</button>'}).join('')+'</div>'+({materi:pbMateri,piagam:pbPiagam,album:pbAlbum}[PB.sub]||pbMateri)()}
+function pbLain(){var t=[['materi','📘 Materi (E-book)'],['piagam','Piagam'],['album','Album']];return '<div class="tabs">'+t.map(function(x){return '<button class="'+(PB.sub==x[0]?'on':'')+'" onclick="PB.sub=\''+x[0]+'\';R();'+(x[0]=='materi'?'ebBuka()':'')+'">'+x[1]+'</button>'}).join('')+'</div>'+({materi:pbMateri,piagam:pbPiagam,album:pbAlbum}[PB.sub]||pbMateri)()}
 function pbUji(){var L=PB.L||[];
  return '<div class="card"><h2>Pengajuan uji ('+L.length+')</h2><div class="mu">Periksa bukti peserta didik, lalu tekan Lulus atau Minta perbaikan. Keputusan tercatat atas nama akunmu.</div><button class="g" onclick="pbMuat()">⟳ Muat ulang</button>'+(PB.msg?'<div class="okm">'+h(PB.msg)+'</div>':'')+'</div>'
  +(L.length?L.map(function(x){var sel=PB.pil==x.id;return '<div class="card"><b>'+h(pbNama(x.nisn))+'</b><div class="mu">Butir <b>'+h(x.butir)+'</b> · diajukan '+h(x.diajukan)+'</div>'+(x.status=='Direkomendasikan'?'<div class="mu" style="color:#2e7d32">✔ Dicek pembina '+h(x.oleh||'')+'. Menunggu keputusan akhir.</div>':'')
@@ -365,6 +365,6 @@ function pbAbsSimpan(){var rows=(PB.D||[]).map(function(d){return [d.nisn,AB.st[
 
 function ebBuka(){if(PB.tok){var kd=ls('gd_pkode');if(kd){try{var c=JSON.parse(localStorage.getItem('lvl_codes')||'[]');if(c.indexOf(kd)<0){c.push(kd);localStorage.setItem('lvl_codes',JSON.stringify(c))}}catch(e){}}}var f=$('ebf');if(!f.getAttribute('src'))f.setAttribute('src','ebook/index.html');$('eb').className='on'}
 function ebTutup(){$('eb').className=''}
-function ebCard(){return '<div class="card" style="border:2px solid #b71c1c"><b style="font-size:18px">📘 E-book Level Up!</b><div class="mu">Materi SKU asli lengkap dengan gambar, uji nyali, dan ceklis. Ramu terbuka. Rakit, Terap, dan SKK terbuka dengan kode pelantikan dari pembina.</div><button class="b" onclick="ebBuka()">Buka e-book</button></div>'}
+function ebCard(){return '<div class="card" style="border:2px solid #b71c1c;background:#fff3f0"><b style="font-size:20px">📘 E-book Level Up!</b><div class="mu">Inilah materi SKU dan SKK yang utama: lengkap dengan gambar, uji nyali, dan ceklis. Ketuk tombol di bawah untuk membacanya layar penuh.</div><button class="b" style="font-size:18px;padding:14px 20px" onclick="ebBuka()">📖 Baca e-book sekarang</button></div>'}
 R();insShow();
 </script><div id="eb"><div class="ebh"><b>📘 E-book Level Up!</b><button onclick="ebTutup()">Tutup</button></div><iframe id="ebf" title="E-book Level Up"></iframe></div></body></html>

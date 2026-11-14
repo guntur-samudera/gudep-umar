@@ -99,7 +99,7 @@ function muat(auto){if(PB.tok&&U.mode!='x'&&!U.me){pbMuat();return}U.err='';U.ms
   if(r.error){if(auto){ls('gd_p',null);U.err=PESAN[r.error]||'Gagal.'}else U.err=PESAN[r.error]||'Gagal.';if(!U.me)U.me=null;return R()}
   U.me=r.ok;ls('gd_cache',JSON.stringify(r.ok));if(auto||!U.me)U.tab=(r.ok.status=='Belum diisi'||r.ok.status=='Perlu diperbaiki')?'home':U.tab;R()
  }).catch(function(){var c=ls('gd_cache');if(c&&!U.me){try{U.me=JSON.parse(c);U.off=true;R();return}catch(e){}}U.err='Tidak dapat menghubungi server. Periksa internet.';R()})}
-function keluar(){if(PB.tok)return pbKeluar();ls('gd_p',null);ls('gd_cache',null);U={mode:'masuk',tab:'home',me:null,nisn:'',pin:'',msg:'',err:'',foto:'',aj:'',fotoB:'',alb:'gudep',fotoA:'',lvl:'',off:false};R()}
+function keluar(){if(PB.tok)return pbKeluar();U.me&&(U.me.kodeEbook=[]);ebSinkron();ls('gd_p',null);ls('gd_cache',null);U={mode:'masuk',tab:'home',me:null,nisn:'',pin:'',msg:'',err:'',foto:'',aj:'',fotoB:'',alb:'gudep',fotoA:'',lvl:'',off:false};R()}
 function go(t){U.tab=t;U.err='';U.msg='';R();scrollTo(0,0);if(t=='materi')ebBuka()}
 function terkunci(){return U.me&&(U.me.status=='Belum diisi'||U.me.status=='Perlu diperbaiki')}
 function R(){if(PB.tok)return pbR();var m=$('mn'),n=$('nv');if(!U.me){n.innerHTML='';m.innerHTML=viewMasuk();insShow();return}
@@ -112,15 +112,15 @@ function viewMasuk(){var d=U.mode=='daftar';
  if(U.mode=='pembina')return tb+'<div class="card"><h2>Masuk pembina</h2><div class="mu">Khusus pembina yang diizinkan. Pakai ID dan PIN akun pembina (bukan NISN).</div><label>ID akun</label><input id="p_i" autocapitalize="none" autocomplete="username" value="'+h(U.pidv||ls('gd_pid')||'')+'"><label>PIN</label><input id="p_p" type="password" autocomplete="current-password"><button class="b" onclick="pbMasuk()">Masuk pembina</button>'+(U.err?'<div class="err">'+h(U.err)+'</div>':'')+'</div><div class="card" id="ins" style="font-size:14px"></div>';
  return tb
  +'<div class="card"><h2>'+(d?'Buat akunmu':'Masuk')+'</h2><div class="mu">'+(d?'Cukup sekali. Pakai NISN dari sekolah, lalu buat PIN 6 angka yang kamu ingat. Setelah itu isi data dirimu.':'Masuk dengan NISN dan PIN-mu untuk melihat profil, capaian, kartu, piagam, dan album.')+'</div>'
- +'<label>NISN</label><input id="f_n" inputmode="numeric" autocomplete="username" value="'+h(U.nisn)+'">'
+ +'<label>NISN (10 angka, bukan NIK atau nomor induk madrasah)</label><input id="f_n" maxlength="24" inputmode="numeric" autocomplete="username" value="'+h(U.nisn)+'">'
  +'<label>PIN (6 angka)</label><input id="f_p" type="password" inputmode="numeric" maxlength="6" autocomplete="'+(d?'new-password':'current-password')+'">'
  +(d?'<label>Ulangi PIN</label><input id="f_p2" type="password" inputmode="numeric" maxlength="6">':'<label style="font-weight:400"><input id="f_i" type="checkbox" style="width:auto" checked> Tetap masuk di HP ini</label>')
  +'<button class="b" onclick="'+(d?'daftar()':'masuk()')+'">'+(d?'Buat akun':'Masuk')+'</button>'
  +(U.err?'<div class="err">'+h(U.err)+'</div>':'')+(U.msg?'<div class="okm">'+h(U.msg)+'</div>':'')
- +'<div class="mu" style="margin-top:10px">Lupa PIN? Hubungi pembina untuk mengatur ulang.</div><div class="mu" style="text-align:center;margin-top:8px;font-size:12px">Baseline 1.0 · Versi 64</div></div><div class="card" id="ins" style="font-size:14px"></div>'}
-function daftar(){var n=$('f_n').value.replace(/\D/g,''),p=$('f_p').value,p2=$('f_p2').value;U.nisn=n;U.err='';U.msg='';if(p!=p2){U.err='Kedua PIN tidak sama.';return R()}
+ +'<div class="mu" style="margin-top:10px">Lupa PIN? Hubungi pembina untuk mengatur ulang.</div><div class="mu" style="text-align:center;margin-top:8px;font-size:12px">Baseline 1.0 · Versi 66</div></div><div class="card" id="ins" style="font-size:14px"></div>'}
+function daftar(){var n=$('f_n').value.replace(/\D/g,''),p=$('f_p').value,p2=$('f_p2').value;U.nisn=n;U.err='';U.msg='';if(n.length!=10){U.err='NISN terdiri dari 10 angka, yang kamu ketik '+n.length+' angka. Nomor yang lebih panjang (misalnya 18 angka) bukan NISN. Lihat NISN di rapor atau kartu pelajar, atau tanya pembina.';return R()}if(p!=p2){U.err='Kedua PIN tidak sama.';return R()}
  api('daftar',n,p).then(function(r){if(r.error){U.err=PESAN[r.error]||'Gagal.';return R()}U.mode='masuk';U.msg='Akun dibuat. Silakan masuk.';R()}).catch(function(){U.err='Tidak dapat menghubungi server.';R()})}
-function masuk(){var n=$('f_n').value.replace(/\D/g,''),p=$('f_p').value,ing=$('f_i')&&$('f_i').checked;U.nisn=n;U.pin=p;U.err='';U.msg='';
+function masuk(){var n=$('f_n').value.replace(/\D/g,''),p=$('f_p').value,ing=$('f_i')&&$('f_i').checked;U.nisn=n;U.pin=p;U.err='';U.msg='';if(n.length!=10){U.err='NISN terdiri dari 10 angka, yang kamu ketik '+n.length+' angka. Nomor yang lebih panjang (misalnya 18 angka) bukan NISN. Lihat NISN di rapor atau kartu pelajar, atau tanya pembina.';return R()}
  api('masuk',n,p).then(function(r){if(r.error){U.err=PESAN[r.error]||'Gagal.';return R()}U.me=r.ok;ls('gd_cache',JSON.stringify(r.ok));if(ing){ls('gd_n',n);ls('gd_p',p)}U.tab=(r.ok.status=='Belum diisi'||r.ok.status=='Perlu diperbaiki')?'home':'home';R()}).catch(function(){U.err='Tidak dapat menghubungi server.';R()})}
 
 /* ---- Beranda belajar: misi & lencana ---- */
@@ -363,7 +363,10 @@ function pbAbsSimpan(){var rows=(PB.D||[]).map(function(d){return [d.nisn,AB.st[
  apiP('absenSimpan',{tgl:AB.tgl,tema:AB.tema.trim(),jenis:AB.jenis,rows:rows}).then(function(j){if(!j.ok){PB.err=({tanggal:'Tanggal tidak valid.',tema:'Isi nama kegiatan.',kosong:'Tidak ada peserta didik untuk diabsen.',tidak_boleh:'Akun ini tidak boleh mengisi.'})[j.error]||'Gagal: '+(j.error||'');return R()}
   PB.msg='Absen tersimpan ('+j.jumlah+' siswa).';PB.AB=null;pbAbsMuat(true);R()}).catch(function(e){if(e!='keluar'){PB.err='Gagal mengirim.';R()}})}
 
-function ebBuka(){if(PB.tok){var kd=ls('gd_pkode');if(kd){try{var c=JSON.parse(localStorage.getItem('lvl_codes')||'[]');if(c.indexOf(kd)<0){c.push(kd);localStorage.setItem('lvl_codes',JSON.stringify(c))}}catch(e){}}}var f=$('ebf');if(!f.getAttribute('src'))f.setAttribute('src','ebook/index.html');$('eb').className='on'}
+function kodeSimpan(a){try{var c=JSON.parse(localStorage.getItem('lvl_codes')||'[]');a(c);localStorage.setItem('lvl_codes',JSON.stringify(c))}catch(e){}}
+function ebSinkron(){if(PB.tok||!U.me)return;var baru=U.me.kodeEbook||[],lama=[];try{lama=JSON.parse(ls('gd_skode')||'[]')}catch(e){}
+kodeSimpan(function(c){lama.forEach(function(k){var i=c.indexOf(k);if(i>=0&&baru.indexOf(k)<0)c.splice(i,1)});baru.forEach(function(k){if(c.indexOf(k)<0)c.push(k)})});ls('gd_skode',baru.length?JSON.stringify(baru):null)}
+function ebBuka(){ebSinkron();if(PB.tok){var kd=ls('gd_pkode');if(kd){try{var c=JSON.parse(localStorage.getItem('lvl_codes')||'[]');if(c.indexOf(kd)<0){c.push(kd);localStorage.setItem('lvl_codes',JSON.stringify(c))}}catch(e){}}}var f=$('ebf');if(!f.getAttribute('src'))f.setAttribute('src','ebook/index.html');$('eb').className='on'}
 function ebTutup(){$('eb').className=''}
 function ebCard(){return '<div class="card" style="border:2px solid #b71c1c;background:#fff3f0"><b style="font-size:20px">📘 E-book Level Up!</b><div class="mu">Inilah materi SKU dan SKK yang utama: lengkap dengan gambar, uji nyali, dan ceklis. Ketuk tombol di bawah untuk membacanya layar penuh.</div><button class="b" style="font-size:18px;padding:14px 20px" onclick="ebBuka()">📖 Baca e-book sekarang</button></div>'}
 R();insShow();
